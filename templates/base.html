@@ -1,0 +1,106 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blogs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--Fonts link-->
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css2?family=Satisfy' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css2?family=Mali:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+<div class="navbar-fixed transparent">
+    <nav class="transparent">
+        <div class="nav-wrapper transparent">
+            <a href="{% url 'home' %}" class="brand-logo"><img class="circle responsive-img" src="{% static "css/images/blogger.png" %}" style="height: 100px; padding: 20px;"></a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down transparent">
+                {% if user.is_authenticated %}
+                <li>
+                    <form class="waves-effect waves-light btn transparent" action="{% url 'accounts:logout' %}" method="post">
+                        {% csrf_token %}
+                        <button class="btn waves-effect waves-light " type="submit">Logout</button>
+                    </form>
+                </li>
+                <li><a href="{% url 'blog:create' %}">Create Article</a></li>
+                {% else %}
+                <li><a href="{% url 'accounts:login' %}">LogIn</a></li>
+                <li><a href="{% url 'accounts:signup' %}">SignUP</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+</div>
+<br>
+
+
+{% block content %}
+{% endblock content %}
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<div class="">
+    <footer class="container-page-footer-transparent">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Blogger's Best Mate</h5>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>About US</th>
+                                <th>Contact info</th>
+                                <th>Our Services</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>Welcome to Blogs, a Bloging</td>
+                                <td><i class="tiny material-icons">contact_phone</i> +91-9979075692</td>
+                                <td>Clean and Beautifull UI</td>
+                            </tr>
+                            <tr>
+                                <td><img class="circle responsive-img" src="{% static "css/images/blogger.png" %}" style="height: 60px"></td>
+                                <td><i class="tiny material-icons">contact_phone</i> +91-7907529652</td>
+                                <td>Social Media promotion</td>
+                            </tr>
+                            <tr>
+                            <td>Keep us Boosted!!!</td>
+                            <td><i class="tiny material-icons">mail_outline</i> sawantnikhil122@gmail.com</td>
+                            <td>Easy User Interface</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="col l4 offset-l2 s2">
+                    <h5 class="white-text">Follow US</h5>
+                    <ul>
+                        <li><a class="grey-text text-lighten-3" href="#!"><i class="tiny material-icons">photo_camera</i> Instagram</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!"><i class="tiny material-icons">question_answer</i> Messenger</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!"><i class="tiny material-icons">photo_camera</i>Link 3</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!"><i class="tiny material-icons">photo_camera</i>Link 4</a></li>
+                    </ul>
+                    <div>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.4973712249675!2d72.99794026466468!3d19.08582438708219!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c12e3c39db7b%3A0x73daf2695f93ff0f!2sJuhu%20Nagar%2C%20Juhu%20Village%2C%20Sector%2011%2C%20Vashi%2C%20Navi%20Mumbai%2C%20Maharashtra%20400703!5e0!3m2!1sen!2sin!4v1598029577654!5m2!1sen!2sin" width="200" height="150" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                © 2020 Copyright Blogs
+                <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container row">
+    {% for article in articles %}
+    <div class="col s4">
+        <div class="card small black">
+            <div class="card-panel black lighten-5 z-depth-1">
+                <span><h5>{{ article.title.upper }}</h5></span>
+                <div class="row valign-wrapper">
+                    <div class="col s12">
+
+                        <img alt="" class="circle responsive-img" src="{{ article.thumb.url }}">
+                        <!-- notice the "circle" class -->
+                    </div>
+                    <div class="col s10">
+                        <p style="color:white">{{ article.snippet }}</p>
+                        <p style="color:white">{{ article.date }}</p>
+                    </div>
+                </div>
+                <div class="card-action">
+                    <a href="{% url 'blog:detail' slug=article.slug %}">See Article</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+{% endblock content %}}

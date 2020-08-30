@@ -1,0 +1,46 @@
+body{
+    background-image: url("images/star.jpg");
+    background-repeat-y: repeat;
+    background-attachment: scroll;
+    width: 100%;
+    color: white;
+}
+
+h1,h2{
+    font-family: 'Bebas Neue', cursive;
+}
+
+p{
+    font-family: 'Satisfy', cursive;
+}
+
+a{
+    font-family: 'Mali', cursive;
+}
+
+.card{
+    height: 300px;
+    overflow: hidden;
+    position: absoulte;
+}
+
+.card-image{
+    height: 200px;
+    overflow: hidden;
+}
+
+
+footer {
+  position: default;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: rgba(255,255,255,0.1);
+  color: yellow;
+  text-align: center;
+}
+
+nav.brand-logo{
+    height: 10px;
+}
