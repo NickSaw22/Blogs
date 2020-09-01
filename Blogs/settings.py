@@ -27,7 +27,7 @@ SECRET_KEY = 'upmm)24+_1+q%06c40qh)phhgjkq^pb!%ut^f72p&15@z^@wrz'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['nick22blogging-appi.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['nick22blogging-appi.herokuapp.com', ]
 
 # Application definition
 
@@ -124,6 +124,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 MEDIA_URL = '/images/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/css/images')
 
 django_heroku.settings(locals())

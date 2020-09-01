@@ -19,7 +19,10 @@
     <nav class="transparent">
         <div class="nav-wrapper transparent">
             <a href="{% url 'home' %}" class="brand-logo"><img class="circle responsive-img" src="{% static "css/images/blogger.png" %}" style="height: 100px; padding: 20px;"></a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down transparent">
+
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
+            <ul class="right hide-on-med-and-down transparent">
                 {% if user.is_authenticated %}
                 <li>
                     <form class="waves-effect waves-light btn transparent" action="{% url 'accounts:logout' %}" method="post">
@@ -35,6 +38,20 @@
             </ul>
         </div>
     </nav>
+    <ul class="sidenav" id="mobile-demo">
+        {% if user.is_authenticated %}
+            <li>
+                <form class="waves-effect waves-light btn transparent" action="{% url 'accounts:logout' %}" method="post">
+                    {% csrf_token %}
+                    <button class="btn waves-effect waves-light " type="submit">Logout</button>
+                </form>
+            </li>
+            <li><a href="{% url 'blog:create' %}">Create Article</a></li>
+        {% else %}
+            <li><a href="{% url 'accounts:login' %}">LogIn</a></li>
+            <li><a href="{% url 'accounts:signup' %}">SignUP</a></li>
+        {% endif %}
+    </ul>
 </div>
 <br>
 
@@ -45,42 +62,39 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <div class="">
-    <footer class="container-page-footer-transparent">
-        <div class="container">
+    <footer class="page-footer-transparent">
+        <div class="container text-center text-md-left">
             <div class="row">
-                <div class="col l6 s12">
+                <div class="col-md-3 mx-auto">
                     <h5 class="white-text">Blogger's Best Mate</h5>
-
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>About US</th>
-                                <th>Contact info</th>
-                                <th>Our Services</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <tr>
-                                <td>Welcome to Blogs, a Bloging</td>
-                                <td><i class="tiny material-icons">contact_phone</i> +91-9979075692</td>
-                                <td>Clean and Beautifull UI</td>
-                            </tr>
-                            <tr>
-                                <td><img class="circle responsive-img" src="{% static "css/images/blogger.png" %}" style="height: 60px"></td>
-                                <td><i class="tiny material-icons">contact_phone</i> +91-7907529652</td>
-                                <td>Social Media promotion</td>
-                            </tr>
-                            <tr>
-                            <td>Keep us Boosted!!!</td>
-                            <td><i class="tiny material-icons">mail_outline</i> sawantnikhil122@gmail.com</td>
-                            <td>Easy User Interface</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <p>About US</p>
+                    <p>Hey!! Welcome to Blogs, a Blogging stage for all</p>
+                    <img class="circle responsive-img" src="{% static "css/images/blogger.png" %}" style="height: 60px">
+                    <p>Keeps US BooSted!!!</p>
                 </div>
 
-                <div class="col l4 offset-l2 s2">
+                <hr class="clearfix w-100 d-md-none">
+                <div class="col-md-3 mx-auto">
+                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Contact info</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="tiny material-icons">mail_outline</i> sawantnikhil122@gmail.com</li>
+                        <li><i class="tiny material-icons">contact_phone</i> +91-99X9XXXXX</li>
+                        <li><i class="tiny material-icons">contact_phone</i> +91-99X9XXXXX</li>
+                    </ul>
+                </div>
+
+
+                <hr class="clearfix w-100 d-md-none">
+                <div class="col-md-3 mx-auto">
+                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Our Services</h5>
+                    <ul class="list-unstyled">
+                        <li>Clean and Beautiful UI</li>
+                        <li>Social media promotions</li>
+                        <li>High Security and clean UI</li>
+                    </ul>
+                </div>
+
+                <div class="col-md-3 mx-auto">
                     <h5 class="white-text">Follow US</h5>
                     <ul>
                         <li><a class="grey-text text-lighten-3" href="#!"><i class="tiny material-icons">photo_camera</i> Instagram</a></li>
@@ -92,12 +106,11 @@
                 </div>
             </div>
         </div>
-        <div class="footer-copyright">
-            <div class="container">
-                © 2020 Copyright Blogs
-                <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
-            </div>
+
+        <div class="footer-copyright text-center py-3">© 2020 Copyright:
+            <a href="https://nick22blogging-appi.herokuapp.com/">Nick22blogging.com</a>
         </div>
+
     </footer>
 </div>
 </body>
