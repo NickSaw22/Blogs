@@ -1,12 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div style="background-image: url(/static/images/signup.png);">
     <div class="container">
-    <h1>SignUp</h1>
+    <h1 style="color : black">SignUp</h1>
     <form class="col s12" action="/accounts/signup/" method="POST">
         {% csrf_token %}
-        {{ form }}<br>
-        <input class="btn waves-effect waves-light btn-small" type="submit" value="SignUp">
+        <B><font color="black">{{ form }}<br><br>
+        <input class="btn btn green" type="submit" value="signup"><br>
     </form>
     </div>
+
 {% endblock content %}
+</div>

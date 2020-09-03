@@ -1,6 +1,6 @@
 body{
-    background-image: url("images/star.jpg");
-    background-repeat-y: repeat;
+    /*background-image: url(/static/images/star.jpg);
+    */background-repeat-y: no-repeat;
     background-attachment: scroll;
     width: 100%;
     color: white;
@@ -36,11 +36,21 @@ footer {
   bottom: 0;
   left: 0;
   padding: 1rem;
-  background-color: rgba(255,255,255,0.1);
+  background-color: rgba(255,255,255,0.25);
   color: yellow;
   text-align: center;
 }
 
 nav.brand-logo{
     height: 10px;
+}
+
+.sidenav li{
+  position: absoulte;
+  padding: 20px 80px 8px 32px;
+  font-size: 50px;
+  font-family: 'Mali', cursive;
+  color: blue;
+  transition: 0.3s;
+  float: left;
 }

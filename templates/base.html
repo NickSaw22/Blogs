@@ -10,108 +10,139 @@
     <link href='https://fonts.googleapis.com/css2?family=Satisfy' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css2?family=Mali:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static "css/style.css" %}">
+    <link href="{% static "css/style.css" %}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-</head>
+
+
 <body>
-<div class="navbar-fixed transparent">
-    <nav class="transparent">
-        <div class="nav-wrapper transparent">
-            <a href="{% url 'home' %}" class="brand-logo"><img class="circle responsive-img" src="{% static "css/images/blogger.png" %}" style="height: 100px; padding: 20px;"></a>
+<div style="background-image: url(/static/images/star.jpg);">
+    <div class="navbar-fixed transparent">
+        <nav class="transparent">
+            <div class="nav-wrapper transparent">
+                <a href="{% url 'home' %}" class="brand-logo"><img class="circle responsive-img" src="{% static "/images/blogger.png" %}" style="height: 80px; padding: 20px;"></a>
 
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
-            <ul class="right hide-on-med-and-down transparent">
-                {% if user.is_authenticated %}
-                <li>
-                    <form class="waves-effect waves-light btn transparent" action="{% url 'accounts:logout' %}" method="post">
-                        {% csrf_token %}
-                        <button class="btn waves-effect waves-light " type="submit">Logout</button>
-                    </form>
-                </li>
-                <li><a href="{% url 'blog:create' %}">Create Article</a></li>
-                {% else %}
-                <li><a href="{% url 'accounts:login' %}">LogIn</a></li>
-                <li><a href="{% url 'accounts:signup' %}">SignUP</a></li>
-                {% endif %}
-            </ul>
-        </div>
-    </nav>
-    <ul class="sidenav" id="mobile-demo">
+                <ul class="right hide-on-med-and-down transparent">
+                    {% if user.is_authenticated %}
+                    <li>
+                        <form class="btn transparent" action="{% url 'accounts:logout' %}"
+                              method="post">
+                            {% csrf_token %}
+                            <button class="btn waves-effect waves-light red" type="submit">Logout</button>
+                        </form>
+                    </li>
+                    <li><a href="{% url 'blog:create' %}">Create Article</a></li>
+                    {% else %}
+
+                    <li><a href="{% url 'accounts:login' %}">LogIn</a></button></li>
+                    <li><a href="{% url 'accounts:signup' %}">SignUP</a></button></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <ul class="sidenav transparent" id="mobile-demo">
         {% if user.is_authenticated %}
-            <li>
-                <form class="waves-effect waves-light btn transparent" action="{% url 'accounts:logout' %}" method="post">
-                    {% csrf_token %}
-                    <button class="btn waves-effect waves-light " type="submit">Logout</button>
-                </form>
-            </li>
-            <li><a href="{% url 'blog:create' %}">Create Article</a></li>
+        <li>
+            <button class="btn waves-effect waves-light orange" type="submit"><a href="{% url 'home' %}">Home</a>
+            </button>
+        </li>
+        <li>
+            <button class="btn waves-effect waves-light yellow" type="submit"><a href="{% url 'blog:create' %}">Create
+                Article</a>
+            </button>
+        </li>
+        <li>
+            <form action="{% url 'accounts:logout' %}" method="post">
+                {% csrf_token %}
+                <button class="btn waves-effect waves-light red" type="submit">Logout</button>
+            </form>
+        </li>
         {% else %}
-            <li><a href="{% url 'accounts:login' %}">LogIn</a></li>
-            <li><a href="{% url 'accounts:signup' %}">SignUP</a></li>
+        <li>
+            <button class="btn waves-effect waves-light yellow" type="submit"><a href="{% url 'home' %}">Home</a>
+            </button>
+        </li>
+        <li>
+            <button class="btn waves-effect waves-light yellow" type="submit"><a
+                    href="{% url 'accounts:login' %}">LogIn</a></button>
+        </li>
+        <li>
+            <button class="btn waves-effect waves-light yellow" type="submit"><a href="{% url 'accounts:signup' %}">SignUP</a>
+            </button>
+        </li>
         {% endif %}
     </ul>
-</div>
-<br>
+    <script>
+         document.addEventListener('DOMContentLoaded', function() {
+         var elems = document.querySelectorAll('.sidenav');
+         var instances = M.Sidenav.init(elems, {edge:'left'});
+       });
+    </script>
+
+    {% block content %}
+    {% endblock content %}
 
 
-{% block content %}
-{% endblock content %}
+    <div style="background-image: url(/static/images/foot.png);background-repeat-y: repeat;background-attachment: scroll;width: 100%;">
+        <div class="white-text">
+            <footer class="page-footer-transparent">
+                <div class="container text-center text-md-left">
+                    <div class="row">
+                        <div class="col l4 s4">
+                            <h5 class="">Blogger's Best Mate</h5>
+                            <p>About US</p>
+                            <p>Hey!! Welcome to Blogs, a Blogging stage for all</p>
+                            <img src="{% static "/images/blogger.png" %}"  class="circle responsive-img"  style="height: 60px">
+                            <p>Keeps US BooSted!!!</p>
+                        </div>
+
+                        <div class="col l4 s4">
+                            <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Contact info</h5>
+                            <ul>
+                                <li><i class="tiny material-icons">mail_outline</i> sawantnikhil122@gmail.com</li>
+                                <li><i class="tiny material-icons">contact_phone</i> +91-99X9XXXXX</li>
+                                <li><i class="tiny material-icons">contact_phone</i> +91-99X9XXXXX</li>
+                            </ul>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<div class="">
-    <footer class="page-footer-transparent">
-        <div class="container text-center text-md-left">
-            <div class="row">
-                <div class="col l6 s12">
-                    <h5 class="white-text">Blogger's Best Mate</h5>
-                    <p>About US</p>
-                    <p>Hey!! Welcome to Blogs, a Blogging stage for all</p>
-                    <img class="circle responsive-img" src="{% static "css/images/blogger.png" %}" style="height: 60px">
-                    <p>Keeps US BooSted!!!</p>
-                </div>
+                            <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Our Services</h5>
+                            <ul>
+                                <li><p>Clean and Beautiful UI</p></li>
+                                <li><p>Social media promotions</p></li>
+                                <li><p>High Security and clean UI</p></li>
+                            </ul>
+                        </div>
 
-                <hr class="clearfix w-100 d-md-none">
-                <div class="col l6 s12">
-                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Contact info</h5>
-                    <ul class="list-unstyled">
-                        <li><i class="tiny material-icons">mail_outline</i> sawantnikhil122@gmail.com</li>
-                        <li><i class="tiny material-icons">contact_phone</i> +91-99X9XXXXX</li>
-                        <li><i class="tiny material-icons">contact_phone</i> +91-99X9XXXXX</li>
-                    </ul>
-                </div>
-
-
-                <hr class="clearfix w-100 d-md-none">
-                <div class="col l6 s12">
-                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Our Services</h5>
-                    <ul class="list-unstyled">
-                        <li>Clean and Beautiful UI</li>
-                        <li>Social media promotions</li>
-                        <li>High Security and clean UI</li>
-                    </ul>
-                </div>
-
-                <div class="col l6 s12">
-                    <h5 class="white-text">Follow US</h5>
-                    <ul>
-                        <li><a class="grey-text text-lighten-3" href="#!"><i class="tiny material-icons">photo_camera</i> Instagram</a></li>
-                        <li><a class="grey-text text-lighten-3" href="#!"><i class="tiny material-icons">question_answer</i> Messenger</a></li>
-                    </ul>
-                    <div style="width: 100%">
-                        <iframe width="200" height="150" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=150&amp;hl=en&amp;q=thane+(Nikhil)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
+                        <div class="col l4 s4">
+                            <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Follow US</h5>
+                            <ul>
+                                <li><a class="grey-text text-lighten-3" href="#!"><i class="tiny material-icons">photo_camera</i>
+                                    Instagram</a></li>
+                                <li><a class="grey-text text-lighten-3" href="#!"><i class="tiny material-icons">question_answer</i>
+                                    Messenger</a></li>
+                            </ul>
+                            <div class="col l4 s4" style="width: 100%">
+                                <iframe width="150%" height="30%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=150&amp;hl=en&amp;q=thane+(Nikhil)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
+                <hr width="100%">
 
-        <div class="footer-copyright text-center py-3">© 2020 Copyright:
-            <a href="https://nick22blogging-appi.herokuapp.com/">Nick22blogging.com</a>
-        </div>
+                <div class="footer-copyright text-center py-3">© 2020 Copyright:
+                    <a href="{% url 'home' %}">Nick22blogging.com</a>
+                </div>
 
-    </footer>
+            </footer>
+        </div>
+    </div>
 </div>
+</div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 </html>
+
+

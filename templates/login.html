@@ -1,15 +1,19 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <div style="background-image: url(/static/images/leaf.png)">
     <div class="container">
-    <h1>LogIn</h1>
+    <h1 style="color : red">LogIn</h1>
     <form class="site-form" action="{% url 'accounts:login' %}" method="POST">
         {% csrf_token %}
         {{ form }}
         {% if request.GET.next %}
             <input type="hidden" name="next" value="{{ request.GET.next }}">
         {% endif %}
-        <input type="submit" value="Login">
+        <input class="btn btn green" type="submit" value="Login">
     </form>
     </div>
+
+
 {% endblock content %}
+    </div>

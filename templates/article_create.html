@@ -1,14 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div style="background-image: url(/static/images/create.png);">
 <div class="container create-article">
-    <h1>Create a awesome new article</h1>
+    <h1 style="color: grey">Create a awesome new article</h1>
     <form class="site-form" action="{% url 'blog:create' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form }}
         <br><br>
-        <input type="submit" value="Create">
+        <input class="btn btn green" type="submit" value="Create">
     </form>
 </div>
 
-{% endblock content %}}
+{% endblock content %}
